@@ -1,10 +1,10 @@
-### Resources
-
 I worked with Frederik on this excercise.
 
 You can check our result here: https://marijnst.github.io/peer-programming/
 
 We still have 3 steps to go but we ran out of time.
+
+### Resources
 
 https://www.w3schools.com/jsref/met_document_createelement.asp
 
