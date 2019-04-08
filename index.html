@@ -16,12 +16,13 @@
     <div class="row">
         <div class="col-12 bg-white shadow-sm p-4 mx-auto mt-4 border">
             <!-- Start writing content here -->
+            <p id="errormessage"></p>
             <input type="text" id="input-1">
             <input type="text" id="input-2"> <br>
             <button class="btn btn-primary mt-2">Calculate!</button>
         </div>
         <div class="col-12 bg-white shadow-sm p-4 mx-auto mt-4 border d-flex">
-            <p id="result">Here is your result: </p>
+            <p>Here is your result: <span id="result"></span></p>
         </div>
     </div>
 
@@ -40,6 +41,7 @@
     var input1 = document.querySelector("#input-1");
     var input2 = document.querySelector("#input-2");
     var result = document.querySelector("#result");
+    var error = document.querySelector("#errormessage");
     var som = 0;
 
     knopke.addEventListener("click", function(){
@@ -49,20 +51,27 @@
         var icon = document.createElement("i");
         icon.classList.add("fas", "fa-spinner");
         knopke.prepend(icon, " ");
+        // input controleren
+        if (input1.value == "" || input2.value == ""){
+            reset(icon);
+            error.textContent = "Please fill in both fields";
+            return;
+        };
         //waardes opnemen
         var waarde1 = parseInt(input1.value);
         var waarde2 = parseInt(input2.value);
         var som = waarde1 + waarde2;
         setTimeout(function(){
-            knopke.classList.replace("btn-success", "btn-primary");
-            knopke.removeChild(icon);
-            knopke.textContent = "Calculate!";
-            result.textContent += som;
+            reset(icon);
+            result.textContent = som;
         }, 500);
     });
 
-
-
+    function reset(i){
+        knopke.classList.replace("btn-success", "btn-primary");
+        knopke.removeChild(i);
+        knopke.textContent = "Calculate!";
+    }
 
 </script>
 </body>
