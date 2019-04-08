@@ -74,13 +74,35 @@
                 result = waarde1 + waarde2;
                 break;
             case "-":
-                result = waarde1 - waarde2;
+                if(waarde1>waarde2){
+                    result = waarde1 - waarde2;
+                } else {
+                    reset(icon);
+                    error.textContent = "The first number has to be bigger then the second one to subtract";
+                    return;
+                }
                 break;
             case "*":
+                if (waarde2%2 != 0) {
+                    reset(icon);
+                    error.textContent = "You can't multiply with an odd number";
+                    return; 
+                } else {
                 result = waarde1 * waarde2;
+                }
                 break;
             case "/":
-                result = waarde1 / waarde2;
+                if (waarde1 === 0 || waarde2 === 0){
+                    reset(icon);
+                    error.textContent = "You can't use 0 when dividing";
+                    return;
+                } else if ( waarde1%waarde2 != 0){
+                    reset(icon);
+                    error.textContent = "The result has to be an integer when dividing";
+                    return;
+                } else {
+                    result = waarde1 / waarde2;
+                }
         };
         
         setTimeout(function(){
