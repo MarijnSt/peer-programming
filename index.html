@@ -16,6 +16,7 @@
     <div class="row">
         <div class="col-12 bg-white shadow-sm p-4 mx-auto mt-4 border">
             <!-- Start writing content here -->
+            <button class="btn btn-primary">Calculate!</button>
 
         </div>
     </div>
@@ -31,7 +32,20 @@
 
 <script>
     /** Write your javascript code here **/
+    var knopke = document.querySelector("button");
+    console.log(knopke);
 
+    knopke.addEventListener("click", function(){
+        knopke.classList.replace("btn-primary", "btn-success");
+        knopke.textContent = "Calculating";
+        var icon = document.createElement("i");
+        icon.classList.add("fas", "fa-spinner");
+        knopke.prepend(icon, " ");
+        setTimeout(function(){
+            knopke.classList.replace("btn-success", "btn-primary");
+            knopke.removeChild(icon);
+        }, 500);
+    });
 
 
 
