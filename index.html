@@ -67,14 +67,14 @@
         //waardes opnemen
         var waarde1 = parseInt(input1.value);
         var waarde2 = parseInt(input2.value);
-        //operator bepalen
+        //operator bepalen, error catchers en berekening resultaat
         var x = operator.value;
         switch(x){
             case "+":
                 result = waarde1 + waarde2;
                 break;
             case "-":
-                if(waarde1>waarde2){
+                if(waarde1 > waarde2){
                     result = waarde1 - waarde2;
                 } else {
                     reset(icon);
@@ -83,7 +83,7 @@
                 }
                 break;
             case "*":
-                if (waarde2%2 != 0) {
+                if (waarde1 % 2 != 0 || waarde2 % 2 != 0) {
                     reset(icon);
                     error.textContent = "You can't multiply with an odd number";
                     return; 
@@ -96,7 +96,7 @@
                     reset(icon);
                     error.textContent = "You can't use 0 when dividing";
                     return;
-                } else if ( waarde1%waarde2 != 0){
+                } else if (waarde1 % waarde2 != 0){
                     reset(icon);
                     error.textContent = "The result has to be an integer when dividing";
                     return;
