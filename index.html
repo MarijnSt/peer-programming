@@ -16,8 +16,12 @@
     <div class="row">
         <div class="col-12 bg-white shadow-sm p-4 mx-auto mt-4 border">
             <!-- Start writing content here -->
-            <button class="btn btn-primary">Calculate!</button>
-
+            <input type="text" id="input-1">
+            <input type="text" id="input-2"> <br>
+            <button class="btn btn-primary mt-2">Calculate!</button>
+        </div>
+        <div class="col-12 bg-white shadow-sm p-4 mx-auto mt-4 border d-flex">
+            <p id="result">Here is your result: </p>
         </div>
     </div>
 
@@ -33,17 +37,27 @@
 <script>
     /** Write your javascript code here **/
     var knopke = document.querySelector("button");
-    console.log(knopke);
+    var input1 = document.querySelector("#input-1");
+    var input2 = document.querySelector("#input-2");
+    var result = document.querySelector("#result");
+    var som = 0;
 
     knopke.addEventListener("click", function(){
         knopke.classList.replace("btn-primary", "btn-success");
-        knopke.textContent = "Calculating";
+        knopke.textContent = "Calculating...";
+        //spinner toevoegen
         var icon = document.createElement("i");
         icon.classList.add("fas", "fa-spinner");
         knopke.prepend(icon, " ");
+        //waardes opnemen
+        var waarde1 = parseInt(input1.value);
+        var waarde2 = parseInt(input2.value);
+        var som = waarde1 + waarde2;
         setTimeout(function(){
             knopke.classList.replace("btn-success", "btn-primary");
             knopke.removeChild(icon);
+            knopke.textContent = "Calculate!";
+            result.textContent += som;
         }, 500);
     });
 
