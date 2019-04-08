@@ -18,6 +18,12 @@
             <!-- Start writing content here -->
             <p id="errormessage"></p>
             <input type="text" id="input-1">
+            <select name="operator" id="operator">
+                <option value="+">+</option>
+                <option value="-">-</option>
+                <option value="*">*</option>
+                <option value="/">/</option>
+            </select>
             <input type="text" id="input-2"> <br>
             <button class="btn btn-primary mt-2">Calculate!</button>
         </div>
@@ -40,9 +46,10 @@
     var knopke = document.querySelector("button");
     var input1 = document.querySelector("#input-1");
     var input2 = document.querySelector("#input-2");
-    var result = document.querySelector("#result");
+    var resultMessage = document.querySelector("#result");
     var error = document.querySelector("#errormessage");
-    var som = 0;
+    var operator = document.querySelector("select");
+    var result = 0;
 
     knopke.addEventListener("click", function(){
         knopke.classList.replace("btn-primary", "btn-success");
@@ -60,10 +67,25 @@
         //waardes opnemen
         var waarde1 = parseInt(input1.value);
         var waarde2 = parseInt(input2.value);
-        var som = waarde1 + waarde2;
+        //operator bepalen
+        var x = operator.value;
+        switch(x){
+            case "+":
+                result = waarde1 + waarde2;
+                break;
+            case "-":
+                result = waarde1 - waarde2;
+                break;
+            case "*":
+                result = waarde1 * waarde2;
+                break;
+            case "/":
+                result = waarde1 / waarde2;
+        };
+        
         setTimeout(function(){
             reset(icon);
-            result.textContent = som;
+            resultMessage.textContent = result;
         }, 500);
     });
 
